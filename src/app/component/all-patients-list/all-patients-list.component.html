@@ -1,0 +1,37 @@
+<app-header></app-header>
+  <div class="table-div">
+    <table class="table-class">
+      <thead>
+        <tr class="table-head">
+          <th>Patient ID</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>Gender</th>
+          <th>DOB(yyyy-MM-dd)</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Registered on</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- display all patients list -->
+        <tr id="table-row" *ngFor="let item of allPatients">
+          <td id="table-id" >{{ item.id }}</td>
+          <td id="table-firstname" class="td-column">{{ item.firstName }}</td>
+          <td id="table-lastname" >{{ item.firstName }}</td>
+          <td id="table-gender">{{ item.gender }}</td>
+          <td id="table-dob">{{ item.gender }}</td>
+          <td id="table-mobile">{{ item.mobile }}</td>
+          <td id="table-email">{{ item.mobile }}</td>
+          <td id="table-registeredOn">{{ item.firstName }}</td>
+          <td class="column-btn">
+            <!--call view method with selected id when clicking this button-->
+            <!-- <a id="view" (click)="!!view(item.id)" class="view-details"></a> -->
+            <button id="view" class="prompt-btn btn" (click)="view(item.id)">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

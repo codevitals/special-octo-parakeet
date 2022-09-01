@@ -1,0 +1,134 @@
+<!-- Write necessary code-->
+<app-header></app-header>
+
+  <div id="form-container" >
+    <div class="form">
+      <div class="form-content">
+        <div class="col-sm-12 ">
+        <div class="col-sm-8 div-header">
+          <h2 class="header">Enter Patient details</h2>
+        </div>
+
+        </div>
+
+        <!-- call submitForm method with all form values if form is valid -->
+        <form class="ro-form profile-form" [formGroup]="complexForm" (ngSubmit)="submitForm()" novalidate>
+
+          <div class="form-group">
+            <label class="label-name">
+              First Name:<span class="required">*</span>
+            </label>
+            <input id="firstname" formControlName="firstName" class="form-control text-box" type="text" placeholder="FIRSTNAME">
+            <div id="error-no-firstname" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.firstName.dirty && complexForm.controls.firstName.errors?.required">
+              {{emptyFirstname}}
+            </div>
+            <div id="error-minlength-firstname" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.firstName.dirty && complexForm.controls.firstName.errors?.minlength">
+              {{minlengthFirstname}}
+            </div>
+            <div id="error-maxlength-firstname" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.firstName.dirty && complexForm.controls.firstName.errors?.maxlength">
+              {{maxlengthFirstname}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-name">Last Name:
+              <span class="required">*</span>
+            </label>
+            <input id="lastname" formControlName="lastName" class="form-control text-box" type="text" placeholder="LASTNAME">
+            <div id="error-no-lastname"  class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.lastName.dirty && complexForm.controls.lastName.errors?.required">
+              {{emptyLastname}}
+            </div>
+            <div id="error-minlength-lastname"  class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.lastName.dirty && complexForm.controls.lastName.errors?.minlength">
+              {{minlengthLastname}}
+            </div>
+            <div id="error-maxlength-lastname" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.lastName.dirty && complexForm.controls.lastName.errors?.maxlength">
+              {{maxlengthLastname}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-name">Gender:
+              <span class="required">*</span>
+            </label>
+            <div class="input-div">
+            <input type="radio" id="male" class="input-content" value="Male" formControlName="gender">
+            <label class="label-content" for="male">Male</label>
+            <input type="radio" id="female" class="input-content" value="Female" formControlName="gender">
+            <label class="label-content" for="female">Female</label>
+            </div>
+            <div id="error-no-gender" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.gender.dirty && complexForm.controls.gender.errors?.required">
+              {{noGender}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-name">
+              Date of birth:<span class="required">*</span>
+            </label>
+            <div >
+            <input id="date-input" formControlName="dob" class="form-control date-input glyphicon glyphicon-calendar" type="date" placeholder="Date of birth" min="1968-01-01" max="{{today}}">
+            </div>
+            <div id="error-no-dob" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.dob.dirty && complexForm.controls.dob.errors?.required">
+              {{noDob}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-name">
+              Contact number:<span class="required">*</span>
+            </label>
+            <input id="mobile" formControlName="mobile" class="form-control text-box" type="text" placeholder="mobile number">
+            <div id="error-no-mobile" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.mobile.dirty && complexForm.controls.mobile.errors?.required">
+              {{noMobile}}
+            </div>
+            <div id="error-number-mobile" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.mobile.dirty && complexForm.controls.mobile.errors?.pattern">
+              {{numberMobile}}
+            </div>
+            <div id="error-maxlength-mobile" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.mobile.dirty && complexForm.controls.mobile.errors?.maxlength">
+              {{maxlengthMobile}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-name" for="email">
+              Email:<span class="required">*</span>
+            </label>
+            <input id="email" formControlName="email" class="form-control text-box" type="email"  placeholder="example:abc12@tcs.com">
+            <div id="error-no-email" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.email.dirty && complexForm.controls.email.errors?.required">
+              {{noEmail}}
+            </div>
+            <div id="error-pattern-email" class="alert alert-danger error-msg"
+              *ngIf="complexForm.controls.email.dirty && complexForm.controls.email.errors?.pattern">
+              {{patternEmail}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label-name" for="description">
+              Description: <span class="xs-font">(Optional)</span>
+            </label>
+            <textarea id="description" formControlName="description" class="form-control " placeholder="Briefly describe the issue"></textarea>
+          </div>
+
+          <div class="form-group">
+          <!-- disable button if form not valid -->
+            <button type="submit" [disabled]="complexForm.invalid" id="submit-btn" class="btn btn-primary submit-btn">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
